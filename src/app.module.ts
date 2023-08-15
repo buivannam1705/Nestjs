@@ -7,6 +7,8 @@ import { Product } from './models/product.model';
 import { Account } from './models/users.model';
 import { ProductModule } from './modules/products/product.module';
 import { UsersModule } from './user/user.module';
+import { User } from './auth/userEntity';
+import { AuthModule } from './auth/auth.module';
 @Module({
   imports: [
     TypeOrmModule.forRoot({
@@ -14,14 +16,16 @@ import { UsersModule } from './user/user.module';
       host: 'localhost',
       port: 3306,
       username: 'root',
-      password: 'Abc@123',
+      password: '170520',
       database: 'quanlysv',
-      entities: [Account,
+      entities: [User,
       ],
       synchronize: true,
     }),
     ProductModule,
     UsersModule,
+    AuthModule
+
 
   ],
   controllers: [AppController,],

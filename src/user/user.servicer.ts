@@ -23,8 +23,6 @@ export class UsersService {
             id: Math.random(),
             username: "nam dep trai qua",
             password: "nam123",
-
-
         };
         this.usersRepository.save(product)
         return product;

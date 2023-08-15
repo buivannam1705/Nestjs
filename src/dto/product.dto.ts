@@ -1,7 +1,12 @@
-import { IsEmpty, IsNumber, MinLength } from 'class-validator';
+import { IsNumber, MinLength } from 'class-validator';
 
 
 export class ProductDto {
+
+
+    email?: string;
+
+    password?: string;
 
     @IsNumber()
     age?: number;
@@ -10,4 +15,5 @@ export class ProductDto {
     name?: string;
 
     address?: string;
+
 };
