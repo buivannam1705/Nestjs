@@ -11,25 +11,39 @@ const common_1 = require("@nestjs/common");
 let ProductSevice = exports.ProductSevice = class ProductSevice {
     constructor() {
         this.products = [
-            { id: 1, categoryId: 1, price: 1000, productName: "Nam" },
-            { id: 2, categoryId: 2, price: 2000, productName: "Kien" },
-            { id: 3, categoryId: 3, price: 3000, productName: "Hung" }
+            { id: 1, name: "nam", age: 20, address: "HN" },
+            { id: 1, name: "kien", age: 20, address: "HY" },
+            { id: 1, name: "hung", age: 20, address: "HP" },
         ];
     }
     getProducts() {
         return this.products;
     }
-    createProduct() {
-        return this.products;
+    createProduct(productDto) {
+        const product = {
+            id: Math.random(),
+            ...productDto
+        };
+        this.products.push(product);
+        return product;
     }
     detailProduct(id) {
         return this.products.find(item => item.id === Number(id));
     }
-    updateProduct() {
-        return this.products;
+    updateProduct(productDto, id) {
+        const index = this.products.findIndex(item => item.id === Number(id));
+        this.products[index].name = productDto.name;
+        this.products[index].age = productDto.age;
+        this.products[index].address = productDto.address;
+        return this.products[index];
     }
     deleteProduct(id) {
-        return this.products.find(item => item.id === Number(id));
+        const index = this.products.findIndex(item => item.id === Number(id));
+        if (index !== -1) {
+            this.products.splice(index, 1);
+            return true;
+        }
+        return false;
     }
 };
 exports.ProductSevice = ProductSevice = __decorate([

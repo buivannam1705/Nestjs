@@ -1,12 +1,12 @@
 export declare class Product {
     id?: number;
-    categoryId?: number;
-    productName?: string;
-    price?: number;
-    constructor({ id, categoryId, productName, price }: {
+    name?: string;
+    age?: number;
+    address?: string;
+    constructor({ id, name, age, address }: {
         id: any;
-        categoryId: any;
-        productName: any;
-        price: any;
+        name: any;
+        age: any;
+        address: any;
     });
 }

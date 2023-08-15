@@ -8,9 +8,9 @@ import { Product } from "src/models/product.model";
 export class ProductSevice {
 
     private products: Product[] = [
-        { id: 1, categoryId: 2, price: 1000, productName: "Nam" },
-        { id: 2, categoryId: 2, price: 2000, productName: "Kien" },
-        { id: 3, categoryId: 2, price: 3000, productName: "Hung" }
+        { id: 1, name: "nam", age: 20, address: "HN" },
+        { id: 1, name: "kien", age: 20, address: "HY" },
+        { id: 1, name: "hung", age: 20, address: "HP" },
     ]
 
     getProducts(): Product[] {
@@ -35,9 +35,9 @@ export class ProductSevice {
 
     updateProduct(productDto: ProductDto, id: number): Product {
         const index = this.products.findIndex(item => item.id === Number(id));
-        this.products[index].categoryId = productDto.categoryId;
-        this.products[index].productName = productDto.productName;
-        this.products[index].price = productDto.price;
+        this.products[index].name = productDto.name;
+        this.products[index].age = productDto.age;
+        this.products[index].address = productDto.address;
         return this.products[index];
     }
 

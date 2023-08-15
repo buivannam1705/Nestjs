@@ -4,11 +4,10 @@ import { IsEmpty, IsNumber, MinLength } from 'class-validator';
 export class ProductDto {
 
     @IsNumber()
-    categoryId?: number;
+    age?: number;
 
     @MinLength(5, { message: "this field must be than 5 character" })
-    productName?: string;
+    name?: string;
 
-    @IsNumber()
-    price?: number;
+    address?: string;
 };

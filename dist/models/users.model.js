@@ -9,18 +9,23 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.ProductDto = void 0;
-const class_validator_1 = require("class-validator");
-class ProductDto {
-}
-exports.ProductDto = ProductDto;
+exports.Account = void 0;
+const typeorm_1 = require("typeorm");
+let Account = exports.Account = class Account {
+};
 __decorate([
-    (0, class_validator_1.IsNumber)(),
+    (0, typeorm_1.PrimaryGeneratedColumn)(),
     __metadata("design:type", Number)
-], ProductDto.prototype, "age", void 0);
+], Account.prototype, "id", void 0);
 __decorate([
-    (0, class_validator_1.MinLength)(5, { message: "this field must be than 5 character" }),
+    (0, typeorm_1.Column)(),
     __metadata("design:type", String)
-], ProductDto.prototype, "name", void 0);
-;
-//# sourceMappingURL=product.dto.js.map
+], Account.prototype, "username", void 0);
+__decorate([
+    (0, typeorm_1.Column)(),
+    __metadata("design:type", String)
+], Account.prototype, "password", void 0);
+exports.Account = Account = __decorate([
+    (0, typeorm_1.Entity)()
+], Account);
+//# sourceMappingURL=users.model.js.map

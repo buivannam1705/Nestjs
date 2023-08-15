@@ -9,18 +9,23 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.ProductDto = void 0;
-const class_validator_1 = require("class-validator");
-class ProductDto {
-}
-exports.ProductDto = ProductDto;
+exports.Categories = void 0;
+const typeorm_1 = require("typeorm");
+let Categories = exports.Categories = class Categories extends typeorm_1.BaseEntity {
+};
 __decorate([
-    (0, class_validator_1.IsNumber)(),
+    (0, typeorm_1.PrimaryGeneratedColumn)(),
     __metadata("design:type", Number)
-], ProductDto.prototype, "age", void 0);
+], Categories.prototype, "id", void 0);
 __decorate([
-    (0, class_validator_1.MinLength)(5, { message: "this field must be than 5 character" }),
+    (0, typeorm_1.Column)(),
     __metadata("design:type", String)
-], ProductDto.prototype, "name", void 0);
-;
-//# sourceMappingURL=product.dto.js.map
+], Categories.prototype, "category", void 0);
+__decorate([
+    (0, typeorm_1.Column)(),
+    __metadata("design:type", String)
+], Categories.prototype, "description", void 0);
+exports.Categories = Categories = __decorate([
+    (0, typeorm_1.Entity)('categories')
+], Categories);
+//# sourceMappingURL=categories.entity.js.map

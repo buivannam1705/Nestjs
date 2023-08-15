@@ -6,8 +6,8 @@ export declare class ProductController {
     private readonly productsService;
     constructor(productsService: ProductSevice);
     getProducts(): ReponseData<Product[]>;
-    createProduct(productDto: ProductDto): ReponseData<ProductDto>;
+    createProduct(productDto: ProductDto): ReponseData<Product>;
     detailProduct(id: number): ReponseData<Product>;
-    updateProduct(): ReponseData<Product[]>;
-    deleteProduct(id: number): ReponseData<Product>;
+    updateProduct(productDto: ProductDto, id: number): ReponseData<Product>;
+    deleteProduct(id: number): ReponseData<boolean>;
 }

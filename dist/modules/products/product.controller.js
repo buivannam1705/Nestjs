@@ -32,7 +32,7 @@ let ProductController = exports.ProductController = class ProductController {
     }
     createProduct(productDto) {
         try {
-            return new globalClass_1.ReponseData(productDto, globalEnum_1.HttpStatus.SUCCESS, globalEnum_1.HttpMessage.SUCCESS);
+            return new globalClass_1.ReponseData(this.productsService.createProduct(productDto), globalEnum_1.HttpStatus.SUCCESS, globalEnum_1.HttpMessage.SUCCESS);
         }
         catch (error) {
             return new globalClass_1.ReponseData(null, globalEnum_1.HttpStatus.ERROR, globalEnum_1.HttpMessage.ERROR);
@@ -46,9 +46,9 @@ let ProductController = exports.ProductController = class ProductController {
             return new globalClass_1.ReponseData(null, globalEnum_1.HttpStatus.ERROR, globalEnum_1.HttpMessage.ERROR);
         }
     }
-    updateProduct() {
+    updateProduct(productDto, id) {
         try {
-            return new globalClass_1.ReponseData(this.productsService.updateProduct(), globalEnum_1.HttpStatus.SUCCESS, globalEnum_1.HttpMessage.SUCCESS);
+            return new globalClass_1.ReponseData(this.productsService.updateProduct(productDto, id), globalEnum_1.HttpStatus.SUCCESS, globalEnum_1.HttpMessage.SUCCESS);
         }
         catch (error) {
             return new globalClass_1.ReponseData(null, globalEnum_1.HttpStatus.ERROR, globalEnum_1.HttpMessage.ERROR);
@@ -71,7 +71,7 @@ __decorate([
 ], ProductController.prototype, "getProducts", null);
 __decorate([
     (0, common_1.Post)(),
-    __param(0, (0, common_1.Body)(new common_1.ValidationPipe)),
+    __param(0, (0, common_1.Body)(new common_1.ValidationPipe())),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", [product_dto_1.ProductDto]),
     __metadata("design:returntype", globalClass_1.ReponseData)
@@ -85,8 +85,10 @@ __decorate([
 ], ProductController.prototype, "detailProduct", null);
 __decorate([
     (0, common_1.Put)('/:id'),
+    __param(0, (0, common_1.Body)()),
+    __param(1, (0, common_1.Param)('id')),
     __metadata("design:type", Function),
-    __metadata("design:paramtypes", []),
+    __metadata("design:paramtypes", [product_dto_1.ProductDto, Number]),
     __metadata("design:returntype", globalClass_1.ReponseData)
 ], ProductController.prototype, "updateProduct", null);
 __decorate([
