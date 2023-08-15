@@ -28,6 +28,13 @@ let UsersController = exports.UsersController = class UsersController {
     createUser(AccountDto) {
         return this.userService.createUser(AccountDto);
     }
+    async getAccountById(id) {
+        const account = await this.userService.getAccountById(id);
+        if (!account) {
+            throw new common_1.NotFoundException('Account not found');
+        }
+        return account;
+    }
 };
 __decorate([
     (0, common_1.Get)(),
@@ -42,6 +49,13 @@ __decorate([
     __metadata("design:paramtypes", [account_dto_1.AccountDto]),
     __metadata("design:returntype", users_model_1.Account)
 ], UsersController.prototype, "createUser", null);
+__decorate([
+    (0, common_1.Get)('/:id'),
+    __param(0, (0, common_1.Param)('id')),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", [Number]),
+    __metadata("design:returntype", Promise)
+], UsersController.prototype, "getAccountById", null);
 exports.UsersController = UsersController = __decorate([
     (0, common_1.Controller)('accounts'),
     __metadata("design:paramtypes", [user_servicer_1.UsersService])

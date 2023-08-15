@@ -18,6 +18,9 @@ const typeorm_1 = require("@nestjs/typeorm");
 const typeorm_2 = require("typeorm");
 const users_model_1 = require("../models/users.model");
 let UsersService = exports.UsersService = class UsersService {
+    detailUser(id) {
+        throw new Error('Method not implemented.');
+    }
     constructor(usersRepository) {
         this.usersRepository = usersRepository;
     }
@@ -32,6 +35,9 @@ let UsersService = exports.UsersService = class UsersService {
         };
         this.usersRepository.save(product);
         return product;
+    }
+    async getAccountById(id) {
+        return this.usersRepository.findOne({ where: { id } });
     }
 };
 exports.UsersService = UsersService = __decorate([
