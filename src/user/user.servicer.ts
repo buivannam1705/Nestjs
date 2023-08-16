@@ -1,36 +1,35 @@
 import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
+import { User } from 'src/entities/user.entity';
 import { Repository } from 'typeorm';
-import { Account } from 'src/models/users.model';
-import { AccountDto } from 'src/dto/account.dto';
+import { UpdateResult, DeleteResult } from 'typeorm';
 
 @Injectable()
-export class UsersService {
-    detailUser(id: number) {
-        throw new Error('Method not implemented.');
-    }
+export class UserService {
     constructor(
-        @InjectRepository(Account)
-        private usersRepository: Repository<Account>,
+        @InjectRepository(User)
+        private readonly userRepo: Repository<User>,
     ) { }
 
-    findAll(): Promise<Account[]> {
-        return this.usersRepository.find();
+    async findAll(): Promise<User[]> {
+        return await this.userRepo.find();
     }
 
-    createUser(accountDto: AccountDto): Account {
-        const product: Account = {
-            id: Math.random(),
-            username: "nam dep trai qua",
-            password: "nam123",
-        };
-        this.usersRepository.save(product)
-        return product;
-    }
-
-    async getAccountById(id: number): Promise<Account> {
-        return this.usersRepository.findOne({ where: { id } });
+    async findOne(id): Promise<User> {
+        return await this.userRepo.findOneBy({ id: id })
     }
 
 
+    async create(task: User): Promise<User> {
+        return await this.userRepo.save(task)
+    }
+
+    async update(user: User): Promise<UpdateResult> {
+        return await this.userRepo.update(user.id, user);
+    }
+
+    async delete(id): Promise<DeleteResult> {
+        return await this.userRepo.delete(id);
+    }
 }
+
